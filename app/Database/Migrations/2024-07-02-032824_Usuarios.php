@@ -6,6 +6,7 @@ use CodeIgniter\Database\Migration;
 
 class Usuarios extends Migration
 {
+    // creacion de las columnas de las tablas para la base de datos
     public function up()
     {
         $this -> forge -> addField([
@@ -57,6 +58,7 @@ class Usuarios extends Migration
             ],
         ]);
 
+        //creacion de la tabla y llaves primarias
         $this -> forge -> addKey('us_id', true);
         $this -> forge -> createTable('usuarios');
         }

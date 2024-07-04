@@ -6,6 +6,7 @@ use CodeIgniter\Database\Migration;
 
 class Editorial extends Migration
 {
+    // creacion de las columnas de las tablas para la base de datos
     public function up()
     {
         $this -> forge -> addField([
@@ -27,6 +28,7 @@ class Editorial extends Migration
             ],
         ]);
 
+        //creacion de la tabla y llaves primarias
         $this -> forge -> addKey('ed_id', true);
         $this -> forge -> createTable('editorial');
 

@@ -6,6 +6,7 @@ use CodeIgniter\Database\Migration;
 
 class Idiomas extends Migration
 {
+    // creacion de las columnas de las tablas para la base de datos
     public function up()
     {
         $this -> forge -> addField([
@@ -27,6 +28,7 @@ class Idiomas extends Migration
             ],
         ]);
 
+        //creacion de la tabla y llaves primarias
         $this -> forge -> addKey('idi_id', true);
         $this -> forge -> createTable('idiomas');
 

@@ -6,6 +6,7 @@ use CodeIgniter\Database\Migration;
 
 class Categorias extends Migration
 {
+    // creacion de las columnas de las tablas para la base de datos
     public function up()
     {
         $this -> forge -> addField([
@@ -22,6 +23,7 @@ class Categorias extends Migration
             ],
           ]);
 
+          //creacion de la tabla y llaves primarias
           $this -> forge -> addKey('cat_id', true);
           $this -> forge -> createTable('categorias');
 

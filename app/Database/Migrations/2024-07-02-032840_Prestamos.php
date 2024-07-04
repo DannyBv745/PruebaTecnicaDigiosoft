@@ -6,6 +6,7 @@ use CodeIgniter\Database\Migration;
 
 class Prestamos extends Migration
 {
+    // creacion de las columnas de las tablas para la base de datos
     public function up()
     {
         $this -> forge -> addField([
@@ -37,6 +38,7 @@ class Prestamos extends Migration
             ],
         ]);
 
+        //creacion de la tabla, llaves primarias y foraneas
         $this -> forge -> addKey('pr_id', true);
         $this -> forge -> addForeignKey('pr_usuario', 'usuarios', 'us_id');
         $this -> forge -> addForeignKey('pr_ejemplar', 'ejemplares', 'ej_id');

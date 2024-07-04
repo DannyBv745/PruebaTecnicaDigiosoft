@@ -6,6 +6,7 @@ use CodeIgniter\Database\Migration;
 
 class Ejemplares extends Migration
 {
+    // creacion de las columnas de las tablas para la base de datos
     public function up()
     {
         $this -> forge -> addField([
@@ -35,6 +36,7 @@ class Ejemplares extends Migration
             ],
         ]);
 
+        //creacion de la tabla, llaves primarias y foraneas
         $this -> forge -> addKey('ej_id', true);
         $this -> forge -> addForeignKey('ej_libro', 'libros', 'li_id');
         $this -> forge -> createTable('ejemplares');

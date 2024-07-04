@@ -6,6 +6,7 @@ use CodeIgniter\Database\Migration;
 
 class Libros extends Migration
 {
+    // creacion de las columnas de las tablas para la base de datos
     public function up()
     {
         $this -> forge -> addField([
@@ -57,6 +58,7 @@ class Libros extends Migration
             ],
         ]);
 
+        //creacion de la tabla, llaves primarias y foraneas
         $this -> forge -> addKey('li_id', true);
         $this -> forge -> addForeignKey('li_autor', 'autores', 'au_id');
         $this -> forge -> addForeignKey('li_editorial', 'editorial', 'ed_id');
