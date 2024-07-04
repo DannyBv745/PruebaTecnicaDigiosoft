@@ -2,10 +2,9 @@
 
 namespace App\Controllers;
 
-use CodeIgniter\HTTP\ResponseInterface;
-use CodeIgniter\RESTful\ResourceController;
+use App\Controllers\BaseController;
 
-class Categorias extends ResourceController
+class Categorias extends BaseController
 {
     /**
      * Return an array of resource objects, themselves in array format.
@@ -14,7 +13,7 @@ class Categorias extends ResourceController
      */
     public function index()
     {
-        //
+        return view('categorias/categorias');
     }
 
     /**
