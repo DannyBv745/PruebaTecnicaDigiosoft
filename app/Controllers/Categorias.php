@@ -3,9 +3,13 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\CategoriasModel;
 
 class Categorias extends BaseController
 {
+
+    protected $helpers = ['form'];
+
     /**
      * Return an array of resource objects, themselves in array format.
      *
@@ -13,7 +17,10 @@ class Categorias extends BaseController
      */
     public function index()
     {
-        return view('categorias/categorias');
+        $categoriasModel = new CategoriasModel();
+        $data['categorias'] = $categoriasModel -> findAll();
+
+        return view('categorias/categorias', $data);
     }
 
     /**
@@ -35,7 +42,7 @@ class Categorias extends BaseController
      */
     public function new()
     {
-        //
+        return view('categorias/nuevaCategoria');
     }
 
     /**
@@ -45,7 +52,22 @@ class Categorias extends BaseController
      */
     public function create()
     {
-        //
+        $reglas = [
+            'cat_nombre' => 'required',
+        ];
+
+        if (!$this -> validate($reglas)) {
+            return redirect() -> back() ->withInput() -> with('error', $this -> validator -> listErrors());
+        }
+
+        $post = $this -> request -> getPost(['cat_nombre']);
+
+        $categoriasModel = new CategoriasModel();
+        $categoriasModel -> insert([
+            'cat_nombre' => trim($post['cat_nombre']),
+        ]);
+
+        return redirect() -> to('categorias');
     }
 
     /**
@@ -57,7 +79,14 @@ class Categorias extends BaseController
      */
     public function edit($id = null)
     {
-        //
+        if ($id == null) {
+            return redirect() -> route('categorias');
+        }
+
+        $categoriasModel = new CategoriasModel();
+        $data['categorias'] = $categoriasModel -> find($id);
+
+        return view('categorias/editarCategoria', $data);
     }
 
     /**
@@ -69,8 +98,22 @@ class Categorias extends BaseController
      */
     public function update($id = null)
     {
-        //
-    }
+        $reglas = [
+            'cat_nombre' => 'required',
+        ];
+
+        if (!$this -> validate($reglas)) {
+            return redirect() -> back() ->withInput() -> with('error', $this -> validator -> listErrors());
+        }
+
+        $post = $this -> request -> getPost(['cat_nombre']);
+
+        $categoriasModel = new CategoriasModel();
+        $categoriasModel -> update($id, [
+            'cat_nombre' => trim($post['cat_nombre']),
+        ]);
+
+        return redirect() -> to('categorias');    }
 
     /**
      * Delete the designated resource object from the model.
@@ -81,6 +124,13 @@ class Categorias extends BaseController
      */
     public function delete($id = null)
     {
-        //
+        if ($id == null) {
+            return redirect() -> route('categorias');
+        }
+
+        $categoriasModel = new CategoriasModel();
+        $categoriasModel -> delete($id);
+
+        return redirect() -> to('categorias');
     }
 }

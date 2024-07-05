@@ -8,4 +8,5 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'Home::index');
 
 // rutas para categorias
-$routes->get('categorias', 'Categorias::index');
+$routes->resource('categorias', ['placeholder' => '(:num)', 'except' => 'show']);
+
