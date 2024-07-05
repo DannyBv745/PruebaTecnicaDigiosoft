@@ -3,13 +3,10 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use App\Models\CategoriasModel;
+use App\Models\AutoresModel;
 
-class Categorias extends BaseController
+class Autores extends BaseController
 {
-
-    protected $helpers = ['form'];
-
     /**
      * Return an array of resource objects, themselves in array format.
      *
@@ -17,10 +14,10 @@ class Categorias extends BaseController
      */
     public function index()
     {
-        $categoriasModel = new CategoriasModel();
-        $data['categorias'] = $categoriasModel -> findAll();
+        $AutoresModel = new AutoresModel();
+        $data['autores'] = $AutoresModel -> findAll();
 
-        return view('categorias/categorias', $data);
+        return view('autores/autores', $data);
     }
 
     /**
@@ -42,7 +39,7 @@ class Categorias extends BaseController
      */
     public function new()
     {
-        return view('categorias/nuevaCategoria');
+        return view('autores/nuevoAutor');
     }
 
     /**
@@ -53,22 +50,25 @@ class Categorias extends BaseController
     public function create()
     {
         $reglas = [
-            'cat_nombre' => 'required',
+            'au_nombre' => 'required',
+            'au_apaterno' => 'required',
+            'au_amaterno' => 'required',
         ];
 
         if (!$this -> validate($reglas)) {
             return redirect() -> back() ->withInput() -> with('error', $this -> validator -> listErrors());
         }
 
-        $post = $this -> request -> getPost(['cat_nombre']);
+        $post = $this -> request -> getPost(['au_nombre', 'au_apaterno', 'au_amaterno']);
 
-        $categoriasModel = new CategoriasModel();
-        $categoriasModel -> insert([
-            'cat_nombre' => trim($post['cat_nombre']),
+        $AutoresModel = new AutoresModel();
+        $AutoresModel -> insert([
+            'au_nombre' => trim($post['au_nombre']),
+            'au_apaterno' => trim($post['au_apaterno']),
+            'au_amaterno' => trim($post['au_amaterno']),
         ]);
 
-        return redirect() -> to('categorias');
-    }
+        return redirect() -> to('autores');    }
 
     /**
      * Return the editable properties of a resource object.
@@ -80,14 +80,13 @@ class Categorias extends BaseController
     public function edit($id = null)
     {
         if ($id == null) {
-            return redirect() -> route('categorias');
+            return redirect() -> route('autores');
         }
 
-        $categoriasModel = new CategoriasModel();
-        $data['categorias'] = $categoriasModel -> find($id);
+        $AutoresModel = new AutoresModel();
+        $data['autores'] = $AutoresModel -> find($id);
 
-        return view('categorias/editarCategoria', $data);
-    }
+        return view('autores/editarAutor', $data);    }
 
     /**
      * Add or update a model resource, from "posted" properties.
@@ -99,21 +98,25 @@ class Categorias extends BaseController
     public function update($id = null)
     {
         $reglas = [
-            'cat_nombre' => 'required',
+            'au_nombre' => 'required',
+            'au_apaterno' => 'required',
+            'au_amaterno' => 'required',
         ];
 
         if (!$this -> validate($reglas)) {
             return redirect() -> back() ->withInput() -> with('error', $this -> validator -> listErrors());
         }
 
-        $post = $this -> request -> getPost(['cat_nombre']);
+        $post = $this -> request -> getPost(['au_nombre', 'au_apaterno', 'au_amaterno']);
 
-        $categoriasModel = new CategoriasModel();
-        $categoriasModel -> update($id, [
-            'cat_nombre' => trim($post['cat_nombre']),
+        $AutoresModel = new AutoresModel();
+        $AutoresModel -> update($id, [
+            'au_nombre' => trim($post['au_nombre']),
+            'au_apaterno' => trim($post['au_apaterno']),
+            'au_amaterno' => trim($post['au_amaterno']),
         ]);
 
-        return redirect() -> to('categorias');    
+        return redirect() -> to('autores');    
     }
 
     /**
@@ -126,12 +129,12 @@ class Categorias extends BaseController
     public function delete($id = null)
     {
         if ($id == null) {
-            return redirect() -> route('categorias');
+            return redirect() -> route('autores');
         }
 
-        $categoriasModel = new CategoriasModel();
-        $categoriasModel -> delete($id);
+        $AutoresModel = new AutoresModel();
+        $AutoresModel -> delete($id);
 
-        return redirect() -> to('categorias');
+        return redirect() -> to('autores');
     }
 }
