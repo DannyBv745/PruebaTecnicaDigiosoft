@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\PrestamosModel;
+use App\Models\UsuariosModel;
+use App\Models\EjemplaresModel;
 
 class Prestamos extends BaseController
 {
@@ -46,7 +48,7 @@ class Prestamos extends BaseController
         $EjemplaresModel = new EjemplaresModel();
         $data['ejemplares'] = $EjemplaresModel -> findAll();
 
-        return view('prestamos/nuevoPrestamo');
+        return view('prestamos/nuevoPrestamo', $data);
     }
 
     /**
@@ -58,7 +60,7 @@ class Prestamos extends BaseController
     {
         $reglas = [
             'pr_prestamo' => 'required',
-            'pr_devolucion' => 'required',
+            'pr_devolucion' => 'permit_empty',
             'pr_usuario' => 'required',
             'pr_ejemplar' => 'required',
         ];
@@ -77,7 +79,7 @@ class Prestamos extends BaseController
             'pr_ejemplar' => trim($post['pr_ejemplar']),
         ]);
 
-        return redirect() -> to('libros');
+        return redirect() -> to('prestamos');
     }
 
     /**
@@ -92,6 +94,9 @@ class Prestamos extends BaseController
         if ($id == null) {
             return redirect() -> route('prestamos');
         }
+
+        $PrestamosModel = new PrestamosModel();
+        $data['prestamos'] = $PrestamosModel -> find($id);
 
         $UsuariosModel = new UsuariosModel();
         $data['usuarios'] = $UsuariosModel -> findAll();
