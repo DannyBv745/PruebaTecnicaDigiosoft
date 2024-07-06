@@ -68,7 +68,8 @@ class Autores extends BaseController
             'au_amaterno' => trim($post['au_amaterno']),
         ]);
 
-        return redirect() -> to('autores');    }
+        return redirect() -> to('autores');
+    }
 
     /**
      * Return the editable properties of a resource object.
@@ -86,7 +87,8 @@ class Autores extends BaseController
         $AutoresModel = new AutoresModel();
         $data['autores'] = $AutoresModel -> find($id);
 
-        return view('autores/editarAutor', $data);    }
+        return view('autores/editarAutor', $data);
+    }
 
     /**
      * Add or update a model resource, from "posted" properties.

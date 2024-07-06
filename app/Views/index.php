@@ -24,6 +24,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="<?= base_url('editorial') ?>">Editoriales</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= base_url('idiomas') ?>">Idiomas</a>
+                </li>
             </ul>
             </div>
         </div>

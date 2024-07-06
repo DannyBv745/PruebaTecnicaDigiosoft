@@ -16,3 +16,6 @@ $routes->resource('autores', ['placeholder' => '(:num)', 'except' => 'show']);
 // rutas para editorial
 $routes->resource('editorial', ['placeholder' => '(:num)', 'except' => 'show']);
 
+// rutas para idiomas
+$routes->resource('idiomas', ['placeholder' => '(:num)', 'except' => 'show']);
+

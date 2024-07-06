@@ -2,10 +2,10 @@
 
 namespace App\Controllers;
 
-use CodeIgniter\HTTP\ResponseInterface;
-use CodeIgniter\RESTful\ResourceController;
+use App\Controllers\BaseController;
+use App\Models\IdiomasModel;
 
-class Idiomas extends ResourceController
+class Idiomas extends BaseController
 {
     /**
      * Return an array of resource objects, themselves in array format.
@@ -14,7 +14,10 @@ class Idiomas extends ResourceController
      */
     public function index()
     {
-        //
+        $IdiomasModel = new IdiomasModel();
+        $data['idiomas'] = $IdiomasModel -> findAll();
+
+        return view('idiomas/idiomas', $data);
     }
 
     /**
@@ -36,7 +39,7 @@ class Idiomas extends ResourceController
      */
     public function new()
     {
-        //
+        return view('idiomas/nuevoIdioma');
     }
 
     /**
@@ -46,7 +49,24 @@ class Idiomas extends ResourceController
      */
     public function create()
     {
-        //
+        $reglas = [
+            'idi_nombre' => 'required',
+            'idi_abreviacion' => 'required',
+        ];
+
+        if (!$this -> validate($reglas)) {
+            return redirect() -> back() ->withInput() -> with('error', $this -> validator -> listErrors());
+        }
+
+        $post = $this -> request -> getPost(['idi_nombre', 'idi_abreviacion']);
+
+        $IdiomasModel = new IdiomasModel();
+        $IdiomasModel -> insert([
+            'idi_nombre' => trim($post['idi_nombre']),
+            'idi_abreviacion' => trim($post['idi_abreviacion']),
+        ]);
+
+        return redirect() -> to('idiomas');
     }
 
     /**
@@ -58,7 +78,14 @@ class Idiomas extends ResourceController
      */
     public function edit($id = null)
     {
-        //
+        if ($id == null) {
+            return redirect() -> route('idiomas');
+        }
+
+        $IdiomasModel = new IdiomasModel();
+        $data['idiomas'] = $IdiomasModel -> find($id);
+
+        return view('idiomas/editarIdioma', $data);
     }
 
     /**
@@ -70,8 +97,25 @@ class Idiomas extends ResourceController
      */
     public function update($id = null)
     {
-        //
-    }
+        $reglas = [
+            'idi_nombre' => 'required',
+            'idi_abreviacion' => 'required',
+        ];
+
+        if (!$this -> validate($reglas)) {
+            return redirect() -> back() ->withInput() -> with('error', $this -> validator -> listErrors());
+        }
+
+        $post = $this -> request -> getPost(['idi_nombre', 'idi_abreviacion']);
+
+        $IdiomasModel = new IdiomasModel();
+        $IdiomasModel -> update($id, [
+            'idi_nombre' => trim($post['idi_nombre']),
+            'idi_abreviacion' => trim($post['idi_abreviacion']),
+        ]);
+
+        return redirect() -> to('idiomas');    
+        }
 
     /**
      * Delete the designated resource object from the model.
@@ -82,6 +126,13 @@ class Idiomas extends ResourceController
      */
     public function delete($id = null)
     {
-        //
+        if ($id == null) {
+            return redirect() -> route('idiomas');
+        }
+
+        $IdiomasModel = new IdiomasModel();
+        $IdiomasModel -> delete($id);
+
+        return redirect() -> to('idiomas');
     }
 }
