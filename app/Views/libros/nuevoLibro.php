@@ -29,7 +29,7 @@
                     </div>
                     <div class="row align-items-center">
                         <div class="form-floating mb-3 mt-4 col">
-                            <input class="form-control" type="text" name="li_isbn" placeholder="ISBN">
+                            <input class="form-control" type="text" name="li_isbn" onkeypress='return event.charCode >= 48 && event.charCode <= 57' minlength="13" maxLength="13" placeholder="ISBN">
                             <label for="floatingInput" style="margin-left: 1rem;">ISBN</label>
                         </div>
                         <div class="form-floating mb-3 mt-4 col" style="height: 4rem;">
