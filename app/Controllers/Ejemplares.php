@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\EjemplaresModel;
+use App\Models\LibrosModel;
 
 class Ejemplares extends BaseController
 {
@@ -39,7 +40,11 @@ class Ejemplares extends BaseController
      */
     public function new()
     {
-        return view('ejemplares/nuevoEjemplar');
+
+        $LibrosModel = new LibrosModel();
+        $data['libros'] = $LibrosModel -> findAll();
+
+        return view('ejemplares/nuevoEjemplar', $data);
     }
 
     /**
@@ -83,6 +88,9 @@ class Ejemplares extends BaseController
         if ($id == null) {
             return redirect() -> route('ejemplares');
         }
+
+        $LibrosModel = new LibrosModel();
+        $data['libros'] = $LibrosModel -> findAll();
 
         $EjemplaresModel = new EjemplaresModel();
         $data['ejemplares'] = $EjemplaresModel -> find($id);
