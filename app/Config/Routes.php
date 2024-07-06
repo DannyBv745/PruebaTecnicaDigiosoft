@@ -19,3 +19,6 @@ $routes->resource('editorial', ['placeholder' => '(:num)', 'except' => 'show']);
 // rutas para idiomas
 $routes->resource('idiomas', ['placeholder' => '(:num)', 'except' => 'show']);
 
+// rutas para libros
+$routes->resource('libros', ['placeholder' => '(:num)', 'except' => 'show']);
+
