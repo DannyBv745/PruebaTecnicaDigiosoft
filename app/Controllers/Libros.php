@@ -3,6 +3,10 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\LibrosModel;
+use App\Models\AutoresModel;
+use App\Models\EditorialModel;
+use App\Models\CategoriasModel;
 use App\Models\IdiomasModel;
 
 class Libros extends BaseController
@@ -38,7 +42,20 @@ class Libros extends BaseController
      */
     public function new()
     {
-        return view('libros/nuevoLibro');
+
+        $AutoresModel = new AutoresModel();
+        $data['autores'] = $AutoresModel -> findAll();
+
+        $EditorialModel = new EditorialModel();
+        $data['editorial'] = $EditorialModel -> findAll();
+
+        $CategoriasModel = new CategoriasModel();
+        $data['categorias'] = $CategoriasModel -> findAll();
+
+        $IdiomasModel = new IdiomasModel();
+        $data['idiomas'] = $IdiomasModel -> findAll();
+
+        return view('libros/nuevoLibro', $data);
     }
 
     /**
@@ -93,6 +110,19 @@ class Libros extends BaseController
 
         $LibrosModel = new LibrosModel();
         $data['libros'] = $LibrosModel -> find($id);
+
+        $AutoresModel = new AutoresModel();
+        $data['autores'] = $AutoresModel -> findAll();
+
+        $EditorialModel = new EditorialModel();
+        $data['editorial'] = $EditorialModel -> findAll();
+
+        $CategoriasModel = new CategoriasModel();
+        $data['categorias'] = $CategoriasModel -> findAll();
+
+        $IdiomasModel = new IdiomasModel();
+        $data['idiomas'] = $IdiomasModel -> findAll();
+
 
         return view('libros/editarLibro', $data);    }
 
