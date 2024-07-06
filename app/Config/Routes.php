@@ -25,3 +25,6 @@ $routes->resource('libros', ['placeholder' => '(:num)', 'except' => 'show']);
 // rutas para ejemplares
 $routes->resource('ejemplares', ['placeholder' => '(:num)', 'except' => 'show']);
 
+// rutas para usuarios
+$routes->resource('usuarios', ['placeholder' => '(:num)', 'except' => 'show']);
+
