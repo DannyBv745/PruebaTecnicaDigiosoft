@@ -41,7 +41,7 @@
                             <label for="floatingInput" style="margin-left: 1rem;">Apellido paterno</label>
                         </div>
                         <div class="form-floating mb-3 mt-4 col">
-                            <input class="form-control" type="text" name="us_password" placeholder="Contraseña" value="<?= $usuarios['us_password']; ?>">
+                            <input class="form-control" type="password" name="us_password" placeholder="Contraseña" value="<?= $usuarios['us_password']; ?>">
                             <label for="floatingInput" style="margin-left: 1rem;">Contraseña</label>
                         </div>
                     </div>
@@ -51,7 +51,7 @@
                             <label for="floatingInput" style="margin-left: 1rem;">Apellido materno</label>
                         </div>
                         <div class="form-floating mb-3 mt-4 col">
-                        <input class="form-control" type="text" name="us_telefono" placeholder="telefono" value="<?= $usuarios['us_telefono']; ?>">
+                        <input class="form-control" type="text" name="us_telefono" placeholder="telefono" onkeypress='return event.charCode >= 48 && event.charCode <= 57' minlength="10" maxLength="10" value="<?= $usuarios['us_telefono']; ?>">
                             <label for="floatingInput" style="margin-left: 1rem;">Telefono</label>
                         </div>
                     </div>
@@ -73,6 +73,22 @@
 
     <!-- Scripts necesarios -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
+    <script>
+        function togglePasswordVisibility() {
+            const passwordInput = document.getElementById('password-input');
+            const toggleButton = document.getElementById('toggle-password');
+            const icon = toggleButton.querySelector('i');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                icon.classList.remove('bi-eye');
+                icon.classList.add('bi-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                icon.classList.remove('bi-eye-slash');
+                icon.classList.add('bi-eye');
+            }
+        }
+    </script>
 </body>
 </html>

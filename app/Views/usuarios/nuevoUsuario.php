@@ -39,7 +39,7 @@
                             <label for="floatingInput" style="margin-left: 1rem;">Apellido paterno</label>
                         </div>
                         <div class="form-floating mb-3 mt-4 col">
-                            <input class="form-control" type="text" name="us_password" placeholder="Contraseña">
+                            <input class="form-control" type="password" name="us_password" placeholder="Contraseña">
                             <label for="floatingInput" style="margin-left: 1rem;">Contraseña</label>
                         </div>
                     </div>
@@ -49,7 +49,7 @@
                             <label for="floatingInput" style="margin-left: 1rem;">Apellido materno</label>
                         </div>
                         <div class="form-floating mb-3 mt-4 col">
-                        <input class="form-control" type="text" name="us_telefono" placeholder="telefono">
+                        <input class="form-control" type="text" name="us_telefono" onkeypress='return event.charCode >= 48 && event.charCode <= 57' minlength="10" maxLength="10" placeholder="telefono">
                             <label for="floatingInput" style="margin-left: 1rem;">Telefono</label>
                         </div>
                     </div>
