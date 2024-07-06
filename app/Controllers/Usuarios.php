@@ -17,7 +17,7 @@ class Usuarios extends BaseController
         $UsuariosModel = new UsuariosModel();
         $data['usuarios'] = $UsuariosModel -> findAll();
 
-        return view('usuarios/usuarios');
+        return view('usuarios/usuarios', $data);
     }
 
     /**
@@ -124,16 +124,16 @@ class Usuarios extends BaseController
             return redirect() -> back() ->withInput() -> with('error', $this -> validator -> listErrors());
         }
 
-        $post = $this -> request -> getPost(['us_user', 'us_password', 'us_nombre', 'us_apaterno', 'us_amaterno', 'us_telefonor', 'us_email', 'us_direccion']);
+        $post = $this -> request -> getPost(['us_user', 'us_password', 'us_nombre', 'us_apaterno', 'us_amaterno', 'us_telefono', 'us_email', 'us_direccion']);
 
         $UsuariosModel = new UsuariosModel();
-        $UsuariosModel -> insert($id, [
+        $UsuariosModel -> update($id, [
             'us_user' => trim($post['us_user']),
             'us_password' => trim($post['us_password']),
             'us_nombre' => trim($post['us_nombre']),
             'us_apaterno' => trim($post['us_apaterno']),
             'us_amaterno' => trim($post['us_amaterno']),
-            'us_telefono' => trim($post['us_telefonor']),
+            'us_telefono' => trim($post['us_telefono']),
             'us_email' => trim($post['us_email']),
             'us_direccion' => trim($post['us_direccion']),
         ]);

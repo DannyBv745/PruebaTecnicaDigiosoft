@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Nuevo idioma</title>
+        <title>Nuevo Libro</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         
     </head>
@@ -20,7 +20,7 @@
         <div class="container-fluid" style="margin-bottom: 10%;">
             <div class="card mb-3" style="max-width: 50rem; margin:auto; margin-top:30px; ">
                 <div class="card-header text-center bg-primary">
-                    <h4 class="text-white">Agregar nuevo idioma</h4>
+                    <h4 class="text-white">Agregar nuevo Libro</h4>
                 </div>
                 <div class="card-body">
                     <div class="form-floating mb-3 mt-4">

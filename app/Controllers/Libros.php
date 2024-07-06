@@ -21,7 +21,8 @@ class Libros extends BaseController
         $LibrosModel = new LibrosModel();
         $data['libros'] = $LibrosModel -> findAll();
 
-        return view('libros/libros', $data);    }
+        return view('libros/libros', $data);
+    }
 
     /**
      * Return the properties of a resource object.

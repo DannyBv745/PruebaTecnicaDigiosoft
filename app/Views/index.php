@@ -33,6 +33,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="<?= base_url('idiomas') ?>">Idiomas</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= base_url('usuarios') ?>">Usuarios</a>
+                </li>
             </ul>
             </div>
         </div>
