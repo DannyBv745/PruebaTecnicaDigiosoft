@@ -20,7 +20,7 @@
         <div class="container-fluid" style="margin-bottom: 10%;">
             <div class="card mb-3" style="max-width: 50rem; margin:auto; margin-top:30px; ">
                 <div class="card-header text-center bg-primary">
-                    <h4 class="text-white">Agregar nueva categoria</h4>
+                    <h4 class="text-white">Agregar nueva editorial</h4>
                 </div>
                 <div class="card-body">
                     <div class="form-floating mb-3 mt-4">
