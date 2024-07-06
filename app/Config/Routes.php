@@ -22,3 +22,6 @@ $routes->resource('idiomas', ['placeholder' => '(:num)', 'except' => 'show']);
 // rutas para libros
 $routes->resource('libros', ['placeholder' => '(:num)', 'except' => 'show']);
 
+// rutas para ejemplares
+$routes->resource('ejemplares', ['placeholder' => '(:num)', 'except' => 'show']);
+
