@@ -27,7 +27,7 @@
                 <div class="card-body">
                     <div class="row align-items-center">
                         <div class="form-floating mb-3 mt-4 col">
-                            <input class="form-control" type="date" name="pr_prestamo" placeholder="Prestamo" value="<?= $prestamos['pr_prestamo']; ?>">
+                            <input class="form-control" type="date" name="pr_prestamo" placeholder="Prestamo" id="date-input" value="<?= $prestamos['pr_prestamo']; ?>">
                             <label for="floatingInput" style="margin-left: 1rem;">Prestamo</label>
                         </div>
                         <div class="form-floating mb-3 mt-4 col" style="height: 4rem;">
@@ -65,6 +65,17 @@
 
     <!-- Scripts necesarios -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
+    <script>
+        // codigo javascript para establecer la fecha del input prestamo como la fecha actual del dispositivo
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const dateInput = document.getElementById('date-input');
+            const today = new Date();
+            const year = today.getFullYear();
+            const month = String(today.getMonth() + 1).padStart(2, '0');
+            const day = String(today.getDate()).padStart(2, '0');
+            const formattedDate = `${year}-${month}-${day}`;
+            dateInput.value = formattedDate;
+        });
+    </script>
 </body>
 </html>
