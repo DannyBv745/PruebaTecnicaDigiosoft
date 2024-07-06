@@ -63,7 +63,7 @@
                     </div>
                     
                     <!-- Botones -->
-                    <a href="<?= base_url('idiomas') ?>" class="btn btn-danger" style="width: 6rem;">Regresar</a>
+                    <a href="<?= base_url('usuarios') ?>" class="btn btn-danger" style="width: 6rem;">Regresar</a>
                     <button type="submit" class="btn btn-primary" style="width: 6rem;">Guardar</button>
                 </div>
             </div>
