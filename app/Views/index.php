@@ -19,6 +19,9 @@
                     <a class="nav-link" href="<?= base_url('libros') ?>">Libros</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="<?= base_url('prestamos') ?>">Prestamos</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="<?= base_url('ejemplares') ?>">Ejemplares</a>
                 </li>
                 <li class="nav-item">

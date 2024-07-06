@@ -28,3 +28,6 @@ $routes->resource('ejemplares', ['placeholder' => '(:num)', 'except' => 'show'])
 // rutas para usuarios
 $routes->resource('usuarios', ['placeholder' => '(:num)', 'except' => 'show']);
 
+// rutas para prestamos
+$routes->resource('prestamos', ['placeholder' => '(:num)', 'except' => 'show']);
+

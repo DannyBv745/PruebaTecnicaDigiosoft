@@ -125,7 +125,8 @@ class Libros extends BaseController
         $data['idiomas'] = $IdiomasModel -> findAll();
 
 
-        return view('libros/editarLibro', $data);    }
+        return view('libros/editarLibro', $data);
+    }
 
     /**
      * Add or update a model resource, from "posted" properties.
@@ -182,5 +183,6 @@ class Libros extends BaseController
         $LibrosModel = new LibrosModel();
         $LibrosModel -> delete($id);
 
-        return redirect() -> to('libros');    }
+        return redirect() -> to('libros');
+    }
 }
