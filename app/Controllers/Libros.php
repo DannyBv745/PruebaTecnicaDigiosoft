@@ -19,9 +19,42 @@ class Libros extends BaseController
     public function index()
     {
         $LibrosModel = new LibrosModel();
-        $data['libros'] = $LibrosModel -> findAll();
+        $LibrosAutores = $LibrosModel -> LibrosAutores();
+        $LibrosEditoriales = $LibrosModel -> LibrosEditoriales();
+        $LibrosIdiomas = $LibrosModel -> LibrosIdiomas();
+        $LibrosCategorias = $LibrosModel -> LibrosCategorias();
+        $Libros = $this -> combinarLibros($LibrosAutores, $LibrosEditoriales, $LibrosIdiomas, $LibrosCategorias);
+        $data['libros'] = $Libros;
 
         return view('libros/libros', $data);
+    }
+
+    public function combinarLibros($LibrosAutores, $LibrosEditoriales, $LibrosIdiomas, $LibrosCategorias)
+    {
+        $libros = [];
+        foreach ($LibrosAutores as $autor) {
+            foreach ($LibrosEditoriales as $editorial) {
+                if ($autor['li_id'] == $editorial['li_id']) {
+                    foreach ($LibrosIdiomas as $idioma) {
+                        if ($autor['li_id'] == $idioma['li_id']) {
+                            foreach ($LibrosCategorias as $categoria) {
+                                if ($autor['li_id'] == $categoria['li_id']) {
+                                    $libros[] = array_merge($autor, [
+                                        'editorial' => $editorial['editorial'],
+                                        'idioma' => $idioma['idioma'],
+                                        'categoria' => $categoria['categoria']
+                                    ]);
+                                    break;
+                                }
+                            }
+                            break;
+                        }
+                    }
+                    break;
+                }
+            }
+        }
+        return $libros;
     }
 
     /**

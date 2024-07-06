@@ -68,7 +68,7 @@
                 <?php foreach ($ejemplares as $ejemplar): ?> 
                     <tr>
                         <td><?= $ejemplar['ej_id']; ?></td>
-                        <td><?= $ejemplar['ej_libro']; ?></td>
+                        <td><?= $ejemplar['titulo']; ?></td>
                         <td><?= $ejemplar['ej_numejemplar']; ?></td>
                         <td><?= $ejemplar['ej_estatus']; ?></td>
                         <td>

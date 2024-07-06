@@ -16,4 +16,12 @@ class EjemplaresModel extends Model
 
     // Dates
     protected $useTimestamps = false;
+
+    //consultas
+    public function EjemplaresLibros()
+    {
+        return $this -> select('ejemplares.*, libros.li_titulo AS titulo')
+                     -> join('libros', 'ejemplares.ej_libro = libros.li_id')
+                     -> findAll();
+    }
 }

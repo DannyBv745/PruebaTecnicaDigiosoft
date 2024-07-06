@@ -17,7 +17,7 @@ class Prestamos extends BaseController
     public function index()
     {
         $PrestamosModel = new PrestamosModel();
-        $data['prestamos'] = $PrestamosModel -> findAll();
+        $data['prestamos'] = $PrestamosModel -> PrestamosUsuarios();
 
         return view('prestamos/prestamos', $data);
     }

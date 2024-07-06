@@ -71,7 +71,7 @@
                         <td><?= $prestamo['pr_id']; ?></td>
                         <td><?= $prestamo['pr_prestamo']; ?></td>
                         <td><?= $prestamo['pr_devolucion']; ?></td>
-                        <td><?= $prestamo['pr_usuario']; ?></td>
+                        <td><?= $prestamo['user']; ?></td>
                         <td><?= $prestamo['pr_ejemplar']; ?></td>
                         <td>
                             <a href="<?= base_url('prestamos/'.$prestamo['pr_id'].'/edit'); ?>" class="btn btn-warning" style="width: 5rem">Editar</a>

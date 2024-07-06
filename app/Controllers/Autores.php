@@ -14,6 +14,7 @@ class Autores extends BaseController
      */
     public function index()
     {
+
         $AutoresModel = new AutoresModel();
         $data['autores'] = $AutoresModel -> findAll();
 

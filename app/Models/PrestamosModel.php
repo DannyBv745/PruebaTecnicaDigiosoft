@@ -17,4 +17,12 @@ class PrestamosModel extends Model
     // Dates
     protected $useTimestamps = false;
     protected $dateFormat    = 'datetime';
+
+    //consultas
+    public function PrestamosUsuarios()
+    {
+        return $this -> select('prestamos.*, usuarios.us_user AS user')
+                     -> join('usuarios', 'prestamos.pr_id = usuarios.us_id')
+                     -> findAll();
+    }
 }

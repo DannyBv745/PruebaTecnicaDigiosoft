@@ -74,10 +74,10 @@
                         <td><?= $libro['li_id']; ?></td>
                         <td><?= $libro['li_titulo']; ?></td>
                         <td><?= $libro['li_isbn']; ?></td>
-                        <td><?= $libro['li_autor']; ?></td>
-                        <td><?= $libro['li_editorial']; ?></td>
-                        <td><?= $libro['li_idioma']; ?></td>
-                        <td><?= $libro['li_categoria']; ?></td>
+                        <td><?= $libro['autor'] . ' ' . $libro['apaterno'] . ' ' . $libro['amaterno']; ?></td>
+                        <td><?= $libro['editorial']; ?></td>
+                        <td><?= $libro['idioma']; ?></td>
+                        <td><?= $libro['categoria']; ?></td>
                         <td><?= $libro['li_numejemplares']; ?></td>
                         <td>
                             <a href="<?= base_url('libros/'.$libro['li_id'].'/edit'); ?>" class="btn btn-warning" style="width: 5rem">Editar</a>

@@ -16,7 +16,7 @@ class Ejemplares extends BaseController
     public function index()
     {
         $EjemplaresModel = new EjemplaresModel();
-        $data['ejemplares'] = $EjemplaresModel -> findAll();
+        $data['ejemplares'] = $EjemplaresModel -> EjemplaresLibros();
 
         return view('ejemplares/ejemplares', $data);
      }
